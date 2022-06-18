@@ -83,3 +83,79 @@ input
   line-height: 20px;
   text-decoration: none; /* remove underline from anchors */
 }
+
+
+.modal-body-phone{
+  height: 300px;
+}
+
+.continue-code-qr{
+  border-radius: 25px;
+  height: 45px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.title-phone{
+  font-style: italic;
+  margin-bottom: 17px;
+  margin-top: 14px;
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.txt-phone{
+  width: 100%;
+  border: 1px solid #4c789b;
+}
+
+.recapcha{
+  display: flex;
+  justify-content: end;
+  margin-bottom: 15px;
+}
+
+.iti--allow-dropdown{
+  width: 100% !important;
+  margin-bottom: 20px;
+
+}
+
+.continue-code-qr:hover{
+  background: linear-gradient(45deg,#b5bc3a,#9f7265);
+}
+
+.size-input{
+  width: 50px;
+  margin-right: 10px;
+  
+}
+
+.modal-body-codeqr{
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 240px;
+}
+
+.title-form-login{
+  font-size: 1.6rem;
+    font-weight: 700;
+    font-style: italic;
+    padding-top: 26px;
+}
+
+.input-container{
+  display: flex;
+  text-align:center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input-code{
+  width: 100px;
+}

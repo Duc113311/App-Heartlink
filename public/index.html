@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- PhoneNumber International -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+  <!--  -->
 
 
   <!-- css file-->
@@ -40,25 +45,28 @@
     </div>
   </div>
 
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="exampleModalLongTitle">Create account</h5>
+        <div class="modal-header" style="text-align: center;
+        padding-left: 134px;">
+          <h5 id="exampleModalLongTitle " class="title-form-login">CREATE ACCOUNT</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div id="logreg-forms">
-            <form class="form-signin">
+            <div class="form-signin">
               <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
                 autofocus="">
               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-              <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign
+              <button class="btn btn-success btn-block" id="signUp" type="submit"><i class="fas fa-sign-in-alt"></i>
+                Sign
                 in</button>
               <div style="display:flex;justify-content: space-between;">
                 <a href="#" id="forgot_pswd">Forgot password?</a>
@@ -67,21 +75,22 @@
 
               <hr>
               <!-- <p>Don't have an account!</p>  -->
-              
-            </form>
+
+            </div>
 
             <div class="marketing-app">
               <h3>GET THE APP!</h3>
-                <img src="../image/ic_gg_play.png" width="400" srcset="">
+              <img src="../image/ic_gg_play.png" width="400" srcset="">
             </div>
 
 
             <div class="social-login">
-              <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> LOG IN
+              <button class="btn facebook-btn social-btn" id="singFacebook" type="button"><span><i class="fab fa-facebook-f"></i> LOG IN
                   WITH FACEBOOK</span> </button>
-              <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
+              <button class="btn google-btn social-btn" id="singGoogle" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
                   WITH GOOGLE</span> </button>
-              <button class="btn phone-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
+              <button class="btn phone-btn social-btn" data-toggle="modal" onclick="onModalPhone()"
+                data-target="#exampleModalPhoneNumber" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
                   WITH PHONE NUMBER</span> </button>
             </div>
             <br>
@@ -93,6 +102,60 @@
     </div>
   </div>
 
+  <div class="modal fade" id="exampleModalPhoneNumber" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body-phone">
+          <div class="container" style="width:100%;">
+            <form id="login">
+              <p class="title-phone">Enter Your Mobile Number</p>
+              <input id="phone" type="tel" class="txt-phone" name="phone" />
+              <div class="recapcha" id="recaptcha-container"></div>
+              <button class="btn continue-code-qr" data-toggle="modal"  id="getCode"
+                data-target="#exampleModalCodeQR" type="button"><span><i class="fab fa-google-plus-g"></i>CONTINUE</span> </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal của mã quét QR -->
+  <div class="modal fade" id="exampleModalCodeQR" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body-codeqr">
+          <form id="login" >
+          <p class="title-phone">Enter Your Mobile Number</p>
+          <div class="d-flex flex-row mt-5 input-container">
+              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text" class="form-control size-input" maxlength="1">
+          </div>
+          <input type="submit" id="signInWithPhone" class="btn continue-code-qr" value="CONTINUE" />
+        </div>
+
+      </div>
+    </div>
+  </div>
   <!-- modal -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -103,6 +166,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+  <script type="module" src="../config/config.js"></script>
+  <script src="../js/login.js"></script>
+
+  <script>
+   
+    function onModalPhone() {
+      debugger
+      $('#exampleModalCenter').modal('hide');
+
+    }
+
+    
+
+
+  </script>
 </body>
 
 </html>
