@@ -116,7 +116,7 @@
           <div class="container" style="width:100%;">
             <form id="login">
               <p class="title-phone">Enter Your Mobile Number</p>
-              <input id="phone" type="tel" class="txt-phone" name="phone" />
+              <input id="phone" type="tel" pattern="[0-9]" class="txt-phone" name="phone" />
               <div class="recapcha" id="recaptcha-container"></div>
               <button class="btn continue-code-qr" data-toggle="modal"  id="getCode"
                 data-target="#exampleModalCodeQR" type="button"><span><i class="fab fa-google-plus-g"></i>CONTINUE</span> </button>
@@ -143,12 +143,14 @@
           <form id="login" >
           <p class="title-phone">Enter Your Mobile Number</p>
           <div class="d-flex flex-row mt-5 input-container">
+              <!-- <input type="text"  class="form-control size-input" maxlength="1">
               <input type="text" class="form-control size-input" maxlength="1">
               <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text"class="form-control size-input" maxlength="1">
               <input type="text" class="form-control size-input" maxlength="1">
-              <input type="text" class="form-control size-input" maxlength="1">
-              <input type="text" class="form-control size-input" maxlength="1">
-              <input type="text" class="form-control size-input" maxlength="1">
+              <input type="text"  class="form-control size-input" maxlength="1"> -->
+
+              <input type="text" id="codeQR" class="form-control text-code-qr" pattern="[0-9]">
           </div>
           <input type="submit" id="signInWithPhone" class="btn continue-code-qr" value="CONTINUE" />
         </div>
@@ -173,7 +175,6 @@
   <script>
    
     function onModalPhone() {
-      debugger
       $('#exampleModalCenter').modal('hide');
 
     }
@@ -183,5 +184,4 @@
 
   </script>
 </body>
-
 </html>

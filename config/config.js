@@ -138,38 +138,45 @@ recaptchaVerifier.render().then((widgetId) => {
   window.recaptchaWidgetId = widgetId;
 });
 
-
 getCode.addEventListener("click", (e) => {
   debugger;
-  const phoneNumber = "+840962282864"
+  const phoneNumber = phoneInput.getNumber();
   // const phoneNumber = document.getElementById("phoneNumber").value;
-  // const appVerifier = window.recaptchaVerifier;
-
+  const appVerifier = window.recaptchaVerifier;
   $("#exampleModalPhoneNumber").modal("hide");
-  // signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-  //   .then((confirmationResult) => {
-  //     debugger;
-
-  //     const sentCodeId = confirmationResult.verificationId;
-  //     signInWithPhone.addEventListener("click", (e) =>
-  //       singWithPhone(sentCodeId)
-  //     );
-  //   })
-  //   .catch((error) => {
-  //     debugger;
-  //     console.log(error);
-  //     // Error; SMS not sent
-  //     // ...
-  //   });
-
+  signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      debugger;
+      
+      const sentCodeId = confirmationResult.verificationId;
+      signInWithPhone.addEventListener("click", (e) =>
+        singWithPhone(sentCodeId)
+      );
+    })
+    .catch((error) => {
+      debugger;
+      console.log(error);
+      // Error; SMS not sent
+      // ...
+    });
 });
+
+
+
+
+
+
+
+
+
+
 const singWithPhone = (sentCodeId) => {
   const code = document.getElementById("codeQR").value;
   const credential = PhoneAuthProvider.credential(sentCodeId, code);
   signInWithCredential(auth, credential)
     .then((result) => {
       debugger;
-      alert("succeess", result);
+      window.location.assign("/html/Profile/profile.html");
     })
     .catch((error) => {
       alert("error", error);
