@@ -68,9 +68,13 @@
               <button class="btn btn-success btn-block" id="signUp" type="submit"><i class="fas fa-sign-in-alt"></i>
                 Sign
                 in</button>
-              <div style="display:flex;justify-content: space-between;">
-                <a href="#" id="forgot_pswd">Forgot password?</a>
-                <a href="#" id="forgot_pswd">Sign up New Account</a>
+              <div style="display:flex;justify-content: space-between;align-items: center;">
+                <!-- <a href="#" id="forgot_pswd">Forgot password?</a>
+                <a href="#" id="forgot_pswd">Sign up New Account</a> -->
+
+                <input type="file" name="fileName" id="uploadFile">
+                <img id="myImg" src="">
+                <button class="btn" id="btnFileUpload" type="button"> UploadFile </button>
               </div>
 
               <hr>
@@ -85,9 +89,11 @@
 
 
             <div class="social-login">
-              <button class="btn facebook-btn social-btn" id="singFacebook" type="button"><span><i class="fab fa-facebook-f"></i> LOG IN
+              <button class="btn facebook-btn social-btn" id="singFacebook" type="button"><span><i
+                    class="fab fa-facebook-f"></i> LOG IN
                   WITH FACEBOOK</span> </button>
-              <button class="btn google-btn social-btn" id="singGoogle" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
+              <button class="btn google-btn social-btn" id="singGoogle" type="button"><span><i
+                    class="fab fa-google-plus-g"></i> LOG IN
                   WITH GOOGLE</span> </button>
               <button class="btn phone-btn social-btn" data-toggle="modal" onclick="onModalPhone()"
                 data-target="#exampleModalPhoneNumber" type="button"><span><i class="fab fa-google-plus-g"></i> LOG IN
@@ -118,8 +124,8 @@
               <p class="title-phone">Enter Your Mobile Number</p>
               <input id="phone" type="tel" pattern="[0-9]" class="txt-phone" name="phone" />
               <div class="recapcha" id="recaptcha-container"></div>
-              <button class="btn continue-code-qr" data-toggle="modal"  id="getCode"
-                data-target="#exampleModalCodeQR" type="button"><span><i class="fab fa-google-plus-g"></i>CONTINUE</span> </button>
+              <button class="btn continue-code-qr" data-toggle="modal" id="getCode" data-target="#exampleModalCodeQR"
+                type="button"><span><i class="fab fa-google-plus-g"></i>CONTINUE</span> </button>
             </form>
           </div>
 
@@ -129,8 +135,9 @@
     </div>
   </div>
 
-   <!-- Modal của mã quét QR -->
-  <div class="modal fade" id="exampleModalCodeQR" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalCenterTitle">
+  <!-- Modal của mã quét QR -->
+  <div class="modal fade" id="exampleModalCodeQR" tabindex="-1" role="dialog" aria-hidden="true"
+    aria-labelledby="exampleModalCenterTitle">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -140,9 +147,9 @@
           </button>
         </div>
         <div class="modal-body-codeqr">
-          <form id="login" >
-          <p class="title-phone">Enter Your Mobile Number</p>
-          <div class="d-flex flex-row mt-5 input-container">
+          <form id="login">
+            <p class="title-phone">Enter Your Mobile Number</p>
+            <div class="d-flex flex-row mt-5 input-container">
               <!-- <input type="text"  class="form-control size-input" maxlength="1">
               <input type="text" class="form-control size-input" maxlength="1">
               <input type="text" class="form-control size-input" maxlength="1">
@@ -151,8 +158,8 @@
               <input type="text"  class="form-control size-input" maxlength="1"> -->
 
               <input type="text" id="codeQR" class="form-control text-code-qr" pattern="[0-9]">
-          </div>
-          <input type="submit" id="signInWithPhone" class="btn continue-code-qr" value="CONTINUE" />
+            </div>
+            <input type="submit" id="signInWithPhone" class="btn continue-code-qr" value="CONTINUE" />
         </div>
 
       </div>
@@ -173,15 +180,16 @@
   <script src="../js/login.js"></script>
 
   <script>
-   
+
     function onModalPhone() {
       $('#exampleModalCenter').modal('hide');
 
     }
 
-    
+
 
 
   </script>
 </body>
+
 </html>
