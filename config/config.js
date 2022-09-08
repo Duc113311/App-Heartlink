@@ -10,6 +10,7 @@ import {
   signInWithPopup,
   signInWithPhoneNumber,
   PhoneAuthProvider,
+  signInWithRedirect,
   signInWithCredential,
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
@@ -44,7 +45,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const username = prompt ("Vui lòng cho chúng tôi biết tên của bạn");
+const username = prompt("Vui lòng cho chúng tôi biết tên của bạn");
 const auth = getAuth(app);
 auth.languageCode = "it";
 
@@ -68,7 +69,7 @@ signUp.addEventListener("click", (e) => {
 
 // login gg
 
-const provider = new GoogleAuthProvider();
+//const provider = new GoogleAuthProvider();
 
 // provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 // provider.setCustomParameters({
@@ -112,19 +113,26 @@ singGoogle.addEventListener("click", (e) => {
 // Facebook
 
 // Login Facebook
-const providerFace = new FacebookAuthProvider();
-
+const provider = new FacebookAuthProvider();
+provider.addScope("user_birthday");
+auth.languageCode = "it";
+provider.setCustomParameters({
+  display: "popup",
+});
 singFacebook.addEventListener("click", (e) => {
   debugger;
-  signInWithPopup(auth, providerFace)
+  signInWithPopup(auth, provider)
     .then((result) => {
-      // The signed-in user info.
+      debugger;
       const user = result.user;
-      console.log("User>>Goole>>>>", user);
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
       // ...
     })
     .catch((error) => {
-      // Handle Errors here.
+      debugger;
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
@@ -236,42 +244,39 @@ btnFileUpload.addEventListener("click", (e) => {
     });
 });
 
+// document.getElementById("message-form").addEventListener("submit", sendMessage);
 
+// // Message
 
-document.getElementById ("message-form"). addEventListener ("submit", sendMessage);
+// function sendMessage(e) {
+//   e.preventDefault();
 
+//   debugger;
+//   // get values to be submitted
+//   const timestamp = Date.now();
+//   const messageInput = document.getElementById("message-input");
+//   const message = messageInput.value;
 
-// Message
+//   // clear the input box
+//   messageInput.value = "";
 
-function sendMessage(e) {
-  e.preventDefault();
+//   //auto scroll to bottom
+//   document
+//     .getElementById("messages")
+//     .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
 
-  debugger
-  // get values to be submitted
-  const timestamp = Date.now();
-  const messageInput = document.getElementById("message-input");
-  const message = messageInput.value;
+//   // create db collection and send in the data
+//   db.ref("messages/" + timestamp).set({
+//     username,
+//     message,
+//   });
+// }
 
-  // clear the input box
-  messageInput.value = "";
-
-  //auto scroll to bottom
-  document
-    .getElementById("messages")
-    .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-
-  // create db collection and send in the data
-  db.ref("messages/" + timestamp).set({
-    username,
-    message,
-  });
-}
-
-fetchChat.on("child_added", function (snapshot) {
-  const messages = snapshot.val();
-  const message = `<li class=${
-    username === messages.username ? "sent" : "receive"
-  }><span>${messages.username}: </span>${messages.message}</li>`;
-  // append the message on the page
-  document.getElementById("messages").innerHTML += message;
-});
+// fetchChat.on("child_added", function (snapshot) {
+//   const messages = snapshot.val();
+//   const message = `<li class=${
+//     username === messages.username ? "sent" : "receive"
+//   }><span>${messages.username}: </span>${messages.message}</li>`;
+//   // append the message on the page
+//   document.getElementById("messages").innerHTML += message;
+// });
