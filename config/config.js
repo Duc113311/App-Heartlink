@@ -10,9 +10,7 @@ import {
   signInWithPopup,
   signInWithPhoneNumber,
   PhoneAuthProvider,
-  signInWithRedirect,
   signInWithCredential,
-  signOut,
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
 
 import {
@@ -32,20 +30,19 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 
 // Config
 const firebaseConfig = {
-  apiKey: "AIzaSyARdyaXB2FXUY59_i0SjKRtzST0MpoR4MY",
-  authDomain: "app-test-heartlink.firebaseapp.com",
-  databaseURL: "https://app-test-heartlink-default-rtdb.firebaseio.com",
-  projectId: "app-test-heartlink",
-  storageBucket: "app-test-heartlink.appspot.com",
-  messagingSenderId: "411604046046",
-  appId: "1:411604046046:web:12de352c5973512d85b24f",
-  measurementId: "G-VS1GE9MMYR",
+  apiKey: "AIzaSyCRl-TXFH_pkwGm3EIHgqdqSD16BbMQvug",
+  authDomain: "heartlink-dating-project.firebaseapp.com",
+  databaseURL: "https://heartlink-dating-project-default-rtdb.firebaseio.com",
+  projectId: "heartlink-dating-project",
+  storageBucket: "heartlink-dating-project.appspot.com",
+  messagingSenderId: "927206952114",
+  appId: "1:927206952114:web:d2c684a42d3e37a1d88dab",
+  measurementId: "G-Y8KBPQ1WPP",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const username = prompt("Vui lòng cho chúng tôi biết tên của bạn");
 const auth = getAuth(app);
 auth.languageCode = "it";
 
@@ -69,12 +66,7 @@ signUp.addEventListener("click", (e) => {
 
 // login gg
 
-//const provider = new GoogleAuthProvider();
-
-// provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-// provider.setCustomParameters({
-//   login_hint: "",
-// });
+const provider = new GoogleAuthProvider();
 
 singGoogle.addEventListener("click", (e) => {
   debugger;
@@ -113,12 +105,12 @@ singGoogle.addEventListener("click", (e) => {
 // Facebook
 
 // Login Facebook
-const provider = new FacebookAuthProvider();
-provider.addScope("user_birthday");
-auth.languageCode = "it";
-provider.setCustomParameters({
-  display: "popup",
-});
+// const provider = new FacebookAuthProvider();
+// provider.addScope("user_birthday");
+// auth.languageCode = "it";
+// provider.setCustomParameters({
+//   display: "popup",
+// });
 singFacebook.addEventListener("click", (e) => {
   debugger;
   signInWithPopup(auth, provider)
@@ -199,7 +191,7 @@ btnFileUpload.addEventListener("click", (e) => {
   debugger;
   const storage = getStorage();
 
-  const storageRef = ref(storage, "some-child/" + fileUpload.name);
+  const storageRef = ref(storage, "dating/" + fileUpload.name);
 
   uploadBytes(storageRef, fileUpload).then((snapshot) => {
     debugger;

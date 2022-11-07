@@ -386,20 +386,22 @@
 </html>
 <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
-    import { getDatabase, set, ref, push, child, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import { getDatabase, set, ref, push, child, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyDbufGrZY9oX23GCjedsM5UDTIUepKkUvg",
-        authDomain: "app-dating-64fa5.firebaseapp.com",
-        projectId: "app-dating-64fa5",
-        storageBucket: "app-dating-64fa5.appspot.com",
-        messagingSenderId: "553384181842",
-        appId: "1:553384181842:web:d69fed05dbd4e67c0a5f8b"
+        apiKey: "AIzaSyCRl-TXFH_pkwGm3EIHgqdqSD16BbMQvug",
+        authDomain: "heartlink-dating-project.firebaseapp.com",
+        databaseURL: "https://heartlink-dating-project-default-rtdb.firebaseio.com",
+        projectId: "heartlink-dating-project",
+        storageBucket: "heartlink-dating-project.appspot.com",
+        messagingSenderId: "927206952114",
+        appId: "1:927206952114:web:d2c684a42d3e37a1d88dab",
+        measurementId: "G-Y8KBPQ1WPP"
     };
 
     // Initialize Firebase
@@ -420,7 +422,7 @@
         const timestamp = Date.now();
 
 
- 
+
 
         const id = push(child(ref(database), 'messages')).key;
 

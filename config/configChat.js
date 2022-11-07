@@ -1,28 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
-import {
-  getDatabase
-
-} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
-import {
-  getAuth,
-  RecaptchaVerifier,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  signInWithPopup,
-  signInWithPhoneNumber,
-  PhoneAuthProvider,
-  signInWithCredential,
-  signOut,
-} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
-
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 
 // Config
 const firebaseConfig = {
@@ -70,17 +49,17 @@ function sendMessage(e) {
     message,
   });
 
-  // set(ref(database, "messages/" + timestamp), {
-  //   username,
-  //   message,
-  // });
+  set(ref(database, "messages/" + timestamp), {
+    username,
+    message,
+  });
 }
 
-// fetchChat.on("child_added", function (snapshot) {
-//   const messages = snapshot.val();
-//   const message = `<li class=${
-//     username === messages.username ? "sent" : "receive"
-//   }><span>${messages.username}: </span>${messages.message}</li>`;
-//   // append the message on the page
-//   document.getElementById("messages").innerHTML += message;
-// });
+fetchChat.on("child_added", function (snapshot) {
+  const messages = snapshot.val();
+  const message = `<li class=${
+    username === messages.username ? "sent" : "receive"
+  }><span>${messages.username}: </span>${messages.message}</li>`;
+  // append the message on the page
+  document.getElementById("messages").innerHTML += message;
+});
